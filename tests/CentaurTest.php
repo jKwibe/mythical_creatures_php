@@ -34,23 +34,29 @@ use PHPUnit\Framework\TestCase;
          $breed = $centaur2->getBreed();
          $this->assertEquals('Groath', $breed);
      }
+
+     public function test_has_excellent_bow_skills()
+     {
+         $centaur = new Centaur('George');
+
+         $shoot = $centaur->shoot();
+
+         $this->assertEquals('Thwang!!!', $shoot);
+     }
+
+     public function test_it_should_have_horse_sound_when_running()
+     {
+         $centaur = new Centaur('George');
+         $this->assertEquals('Clop clop clop!!!', $centaur->run());
+     }
+
+     public function test_should_not_be_cranky_when_first_created()
+     {
+         $centaur = new Centaur('George');
+         $this->assertEquals(false, $centaur->isCranky());
+     }
  }
 
-//it.skip('should have a breed', function() {
-//    var centaur = new Centaur('George', 'Palomino');
-//    assert.equal(centaur.breed, 'Palomino');
-//});
-//
-//it.skip('should have excellent bow skills', function() {
-//    var centaur = new Centaur('George');
-//    assert.equal(centaur.shoot(), 'Twang!!!');
-//});
-//
-//it.skip('should have a horse sound when it runs', function() {
-//    var centaur = new Centaur('George');
-//    assert.equal(centaur.run(), 'Clop clop clop clop!!!');
-//});
-//
 //it.skip('should not be cranky when first created', function() {
 //    var centaur = new Centaur('George');
 //    assert.equal(centaur.cranky, false);
