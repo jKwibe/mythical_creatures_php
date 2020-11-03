@@ -23,16 +23,19 @@ use PHPUnit\Framework\TestCase;
          $name = $centaur2->getName();
          $this->assertEquals('Bob', $name);
      }
+
+     public function test_it_has_breed()
+     {
+         $centaur = new Centaur('George');
+         $breed = $centaur->getBreed();
+         $this->assertEquals('Palomino', $breed);
+
+         $centaur2 = new Centaur('George', 'Groath');
+         $breed = $centaur2->getBreed();
+         $this->assertEquals('Groath', $breed);
+     }
  }
 
-
-//it.skip('should have a name', function() {
-//    var centaur1 = new Centaur('George');
-//    assert.equal(centaur1.name, 'George');
-//    var centaur2 = new Centaur('Bob');
-//    assert.equal(centaur2.name, 'Bob');
-//});
-//
 //it.skip('should have a breed', function() {
 //    var centaur = new Centaur('George', 'Palomino');
 //    assert.equal(centaur.breed, 'Palomino');
