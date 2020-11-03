@@ -71,6 +71,7 @@ class ComposerStaticInitfaa25234802648e1482b226c24e6803e
     );
 
     public static $classMap = array (
+        'Centaur' => __DIR__ . '/../..' . '/src/centaur.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
