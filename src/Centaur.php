@@ -48,7 +48,7 @@ class Centaur
     }
     public function isCranky()
     {
-        return $this->count >= 3 && !($this->isLaying);
+        return $this->count >= 3 && $this->isLaying==false;
     }
 
     public function isSleeping()
@@ -89,6 +89,22 @@ class Centaur
     {
         $this->isStanding = true;
         $this->isLaying = false;
+    }
+
+    public function drinkPotion()
+    {
+        if($this->isLaying())
+        {
+            return 'Can\'t drink while standing';
+        }
+
+        if($this->count==0)
+        {
+            $this->count = 3;
+            return;
+        }
+
+        $this->count = 0;
     }
 
 }

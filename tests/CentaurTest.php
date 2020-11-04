@@ -153,38 +153,29 @@ use PHPUnit\Framework\TestCase;
          {
              $centaur->shoot();
          }
+         $this->assertEquals(true, $centaur->isCranky());
+
+         $centaur->drinkPotion();
+
          $this->assertEquals(false, $centaur->isCranky());
      }
- }
 
-//it.skip('should not be cranky after drinking potion', function() {
-//    var centaur = new Centaur('George');
-//
-//    for (var i = 0; i < 3; i++)  {
-//        centaur.shoot();
-//    }
-//
-//    centaur.drinkPotion();
-//
-//    assert.equal(centaur.cranky, false)
-//  });
-//
-//it.skip('should only drink potion while standing', function() {
-//    var centaur = new Centaur('George');
-//
-//    centaur.drinkPotion();
-//    centaur.layDown();
-//
-//    assert.equal(centaur.drinkPotion(), 'Not while I\'m laying down!');
-//});
-//
-//it.skip('should be cranky if it drinks potion while rested', function() {
-//    var centaur = new Centaur('George');
-//
-//    assert.equal(centaur.cranky, false);
-//
-//    centaur.drinkPotion();
-//
-//    assert.equal(centaur.cranky, true);
-//});
-//});
+     public function test_should_only_drink_potion_while_standing()
+     {
+         $centaur = new Centaur('George');
+
+         $centaur->drinkPotion();
+         $centaur->layDown();
+
+         $this->assertEquals('Can\'t drink while standing', $centaur->drinkPotion());
+     }
+
+     public function test_should_be_cranky_if_drink_postion_while_rested()
+     {
+         $centaur = new Centaur('George');
+
+         $this->assertEquals(false, $centaur->isCranky());
+         $centaur->drinkPotion();
+         $this->assertEquals(true, $centaur->isCranky());
+     }
+ }
