@@ -3,19 +3,14 @@ class Centaur
 {
     private $name;
     private $breed;
-    private $cranky;
-    private $count;
-    private $isStanding;
-    private $isLaying;
+    private $count = 0;
+    private $isStanding = true;
+    private $isLaying = false;
 
     public function __construct($name, $breed='Palomino')
     {
         $this->name = $name;
         $this->breed = $breed;
-        $this->cranky = false;
-        $this->count = 0;
-        $this->isStanding = true;
-        $this->isLaying = false;
     }
 
     public function getName()
