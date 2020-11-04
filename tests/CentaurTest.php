@@ -55,95 +55,97 @@ use PHPUnit\Framework\TestCase;
          $centaur = new Centaur('George');
          $this->assertEquals(false, $centaur->isCranky());
      }
+
+     public function test_should_be_cranky_after_shooting_bow_three_times()
+     {
+         $centaur = new Centaur('George');
+         $this->assertEquals(false, $centaur->isCranky());
+
+         $centaur->shoot();
+         $centaur->run();
+         $centaur->shoot();
+         $this->assertEquals(true, $centaur->isCranky());
+     }
+
+     public function test_should_not_shoot_when_cranky()
+     {
+         $centaur = new Centaur('George');
+
+         $this->assertEquals(false, $centaur->isCranky());
+
+         $centaur->shoot();
+         $centaur->run();
+         $centaur->shoot();
+         $this->assertEquals('No!!!', $centaur->shoot());
+     }
+
+     public function test_should_not_sleep_while_standing()
+     {
+         $centaur = new Centaur('George');
+         $this->assertEquals('Still Standing', $centaur->isSleeping());
+         $centaur->layDown();
+         $this->assertEquals('No!!', $centaur->isSleeping());
+     }
+
+     public function test_not_standing_after_laying_down()
+     {
+         $centaur = new Centaur('George');
+
+         $this->assertEquals(true, $centaur->isStanding());
+         $this->assertEquals(false, $centaur->isLaying());
+
+         $centaur->layDown();
+
+         $this->assertEquals(false, $centaur->isStanding());
+         $this->assertEquals(true, $centaur->isLaying());
+
+         $centaur->standUp();
+
+         $this->assertEquals(true, $centaur->isStanding());
+         $this->assertEquals(false, $centaur->isLaying());
+
+     }
+
+     public function test_should_not_shoot_and_run_while_laying_down()
+     {
+         $centaur = new Centaur('George');
+
+         $centaur->layDown();
+
+         $this->assertEquals('No!!!', $centaur->shoot());
+         $this->assertEquals('No!!!', $centaur->run());
+     }
+
+     public function test_should_sleep_when_laying_down()
+     {
+         $centaur = new Centaur('George');
+         $this->assertEquals('Not a sleep', $centaur->sleep());
+
+         $centaur->layDown();
+
+         $this->assertEquals('ZZZZ', $centaur->sleep());
+     }
+
+     public function test_should_not_be_cranky_after_sleeping()
+     {
+         $centaur = new Centaur('Geaorgr');
+
+         for($i =0; $i < 3; $i++)
+         {
+             $centaur->shoot();
+         }
+         $this->assertEquals(true, $centaur->isCranky());
+
+         $centaur->layDown();
+
+         $this->assertEquals(false, $centaur->isCranky());
+         $this->assertEquals('ZZZZ', $centaur->sleep());
+
+         $centaur->standUp();
+         $this->assertEquals('Thwang!!!', $centaur->shoot());
+     }
  }
 
-//it.skip('should not be cranky when first created', function() {
-//    var centaur = new Centaur('George');
-//    assert.equal(centaur.cranky, false);
-//});
-//
-//it.skip('should be standing up when first created', function() {
-//    var centaur = new Centaur('George');
-//    assert.equal(centaur.standing, true);
-//});
-//
-//it.skip('should be cranky after running or shooting a bow three times', function() {
-//    var centaur = new Centaur('George');
-//
-//    assert.equal(centaur.cranky, false);
-//
-//    centaur.shoot()
-//    centaur.run()
-//    centaur.shoot()
-//
-//    assert.equal(centaur.cranky, true)
-//  });
-//
-//it.skip('should not shoot when cranky', function() {
-//    var centaur = new Centaur('George');
-//
-//    for (var i = 0; i < 3; i++)  {
-//        centaur.shoot();
-//    }
-//
-//    assert.equal(centaur.shoot(), 'NO!');
-//  });
-//
-//it.skip('should not sleep while standing', function() {
-//    var centaur = new Centaur('George');
-//    assert.equal(centaur.sleep(), 'NO!');
-//});
-//
-//it.skip('after laying down it is not standing', function() {
-//    var centaur = new Centaur('George');
-//
-//    assert.equal(centaur.standing, true);
-//    assert.equal(centaur.layingDown, false);
-//
-//    centaur.layDown();
-//
-//    assert.equal(centaur.standing, false);
-//    assert.equal(centaur.layingDown, true);
-//
-//    centaur.standUp();
-//
-//    assert.equal(centaur.standing, true);
-//    assert.equal(centaur.layingDown, false);
-//});
-//
-//it.skip('should not run or shoot while laying down', function() {
-//    var centaur = new Centaur('George');
-//
-//    centaur.layDown();
-//
-//    assert.equal(centaur.shoot(), 'NO!');
-//    assert.equal(centaur.run(), 'NO!');
-//});
-//
-//it.skip('should be able to sleep when laying down', function() {
-//    var centaur = new Centaur('George');
-//    centaur.layDown();
-//    assert.equal(centaur.sleep(), 'ZZZZ');
-//});
-//
-//it.skip('should not be cranky after sleeping', function() {
-//    var centaur = new Centaur('George');
-//
-//    for (var i = 0; i < 3; i++)  {
-//        centaur.shoot();
-//    }
-//
-//    assert.equal(centaur.cranky, true);
-//
-//    centaur.layDown();
-//
-//    assert.equal(centaur.sleep(), 'ZZZZ');
-//    assert.equal(centaur.cranky, false);
-//
-//    centaur.standUp();
-//    assert.equal(centaur.shoot(),'Twang!!!');
-//  });
-//
 //it.skip('should not be cranky after drinking potion', function() {
 //    var centaur = new Centaur('George');
 //
