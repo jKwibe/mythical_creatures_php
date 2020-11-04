@@ -144,6 +144,17 @@ use PHPUnit\Framework\TestCase;
          $centaur->standUp();
          $this->assertEquals('Thwang!!!', $centaur->shoot());
      }
+
+     public function test_should_not_be_cranky_after_drinking_a_potion()
+     {
+         $centaur = new Centaur('George');
+
+         for ($i = 0; $i < 3; $i++)
+         {
+             $centaur->shoot();
+         }
+         $this->assertEquals(false, $centaur->isCranky());
+     }
  }
 
 //it.skip('should not be cranky after drinking potion', function() {
