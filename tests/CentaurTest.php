@@ -145,7 +145,7 @@ use PHPUnit\Framework\TestCase;
          $this->assertEquals('Thwang!!!', $centaur->shoot());
      }
 
-     public function test_should_not_be_cranky_after_drinking_a_potion()
+     public function test_should_not_be_cranky_after_drinking_a_potion() :void
      {
          $centaur = new Centaur('George');
 

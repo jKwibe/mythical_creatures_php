@@ -13,17 +13,17 @@ class Centaur
         $this->breed = $breed;
     }
 
-    public function getName()
+    public function getName():string
     {
         return $this->name;
     }
 
-    public function getBreed()
+    public function getBreed():string
     {
         return $this->breed;
     }
 
-    public function shoot()
+    public function shoot():string
     {
         if ($this->isCranky() || $this->isLaying){
             return 'No!!!';
@@ -32,7 +32,7 @@ class Centaur
         return 'Thwang!!!';
     }
 
-    public function run()
+    public function run():string
     {
         if($this->isLaying)
         {
@@ -41,12 +41,12 @@ class Centaur
         $this->count ++;
         return 'Clop clop clop!!!';
     }
-    public function isCranky()
+    public function isCranky():bool
     {
         return $this->count >= 3 && $this->isLaying==false;
     }
 
-    public function isSleeping()
+    public function isSleeping() :string
     {
         if($this->isStanding)
         {
@@ -55,7 +55,7 @@ class Centaur
         return 'No!!';
     }
 
-    public function sleep()
+    public function sleep():string
     {
         if($this->isLaying)
         {
@@ -65,22 +65,22 @@ class Centaur
         return 'Not a sleep';
     }
 
-    public function isStanding()
+    public function isStanding():bool
     {
         return $this->isStanding;
     }
-    public function isLaying()
+    public function isLaying():bool
     {
         return $this->isLaying;
     }
 
-    public function layDown()
+    public function layDown():void
     {
         $this->isStanding = false;
         $this->isLaying = true;
     }
 
-    public function standUp()
+    public function standUp():void
     {
         $this->isStanding = true;
         $this->isLaying = false;
@@ -100,6 +100,6 @@ class Centaur
         }
 
         $this->count = 0;
-    }
+}
 
 }
