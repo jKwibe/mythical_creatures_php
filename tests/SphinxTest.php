@@ -78,12 +78,10 @@ class SphinxTest extends TestCase
             'riddle' => 'What word becomes shorter when you add two letters to it?',
             'answer'=> 'me'
         );
-""""
+
         $sphinx->collectRiddle($riddle1);
         $sphinx->collectRiddle($riddle2);
         $sphinx->attemptAnswer('short');
-
-        print_r($sphinx->riddles);
 
         $this->assertEquals(array($riddle2), $sphinx->riddles);
     }
