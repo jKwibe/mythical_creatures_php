@@ -83,6 +83,6 @@ class HobbitTest extends TestCase
         $hobbit2 = new Hobbit('Samwise');
 
         $this->assertEquals(true, $hobbit1->hasRing());
-        $this->assertEquals(true, $hobbit2->hasRing());
+        $this->assertEquals(false, $hobbit2->hasRing());
     }
 }

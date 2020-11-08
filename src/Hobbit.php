@@ -26,4 +26,14 @@ class Hobbit
     {
         return $this->age > 100;
     }
+
+    /**
+     *
+     * @return bool|null
+     */
+    public function hasRing(): ?bool
+    {
+        return  $this->name == 'Frodo';
+
+    }
 }
